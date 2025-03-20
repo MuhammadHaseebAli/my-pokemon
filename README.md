@@ -68,3 +68,15 @@ npm v10.8.2
   https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png
   ```
 - **Environment Variables:** `.env` file support is implemented to store sensitive data securely, preventing credentials from being committed to the repository.
+- **Linting:** Implemented ESLint to ensure we write high-quality and standardized code.
+
+## Wishlist  
+Although I have implemented everything as per the task document, I would like to highlight a few areas I would improve if given more time:  
+
+- **UI/UX Enhancements:** Improve typography, responsiveness, and overall user experience.  
+- **Pagination:** Implement proper pagination to allow users to jump to a specific page instead of navigating sequentially.  
+  - Example: If there are 100 pages and the user wants to go to page 50, they shouldn't have to click "Next" 50 times.  
+- **Linting Integration:** Enforce linting checks in Git commits to prevent low-quality code from being committed.  
+- **Accessibility Improvements::** Ensure the app meets WCAG guidelines for better usability, including keyboard navigation and screen reader support.
+- **Infinite Scrolling::**  Instead of traditional pagination, implement infinite scrolling for a seamless browsing experience.
+- **Offline Support::**  Cache data to allow users to browse previously fetched Pokémon even when offline.
