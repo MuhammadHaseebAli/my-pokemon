@@ -22,7 +22,7 @@ const PokemonList: React.FC = () => {
     cssOverride={loaderOverride}
     size={150}
     aria-label="Loading Spinner"
-    data-testid="loader"
+    data-testid="clip-loader"
   /></div>;
 
   if (error) return <p>Something went wrong</p>;

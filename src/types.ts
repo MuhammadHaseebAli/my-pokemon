@@ -34,3 +34,8 @@ export interface PaginationControlsProps {
 export interface PokemonDetailsTableProps {
   data: PokemonData;
 }
+
+export interface PokemonCardProps {
+  id: number;
+  name: string;
+}

@@ -1,6 +1,8 @@
+
 import { render, screen } from "@testing-library/react";
 import PokemonList from "./PokemonList";
 import { useGetPokemonListQuery } from "../../services/pokemon";
+import "@testing-library/jest-dom";
 
 // Mock useNavigate to prevent navigation errors
 jest.mock("react-router-dom", () => ({
@@ -22,7 +24,7 @@ describe("PokemonList Page", () => {
         <PokemonList />
     );
 
-    expect(screen.getByText(/loading/i)).toBeTruthy();
+    expect(screen.getByTestId("clip-loader")).toBeTruthy();
   });
 
   test("renders non-loading state", () => {
@@ -32,9 +34,8 @@ describe("PokemonList Page", () => {
       <PokemonList />
     );
   
-    expect(screen.queryByText(/loading/i)).toBeFalsy();
+    expect(screen.queryByTestId("clip-loader")).not.toBeInTheDocument();
   });
-
 
   test("renders Pokemon list", () => {
     (useGetPokemonListQuery as jest.Mock).mockReturnValue({ data: mockPokemonList, isLoading: false });
@@ -54,6 +55,6 @@ describe("PokemonList Page", () => {
       <PokemonList />
     );
 
-    expect(screen.getByText(/error loading pokémon list/i)).toBeTruthy();
+    expect(screen.getByText(/Something went wrong/i)).toBeTruthy();
   });
 });

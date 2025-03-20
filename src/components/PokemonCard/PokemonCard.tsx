@@ -1,12 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { getPokemonImageUrl } from "../../utils";
+import { PokemonCardProps } from "../../types";
 import { row } from "./PokemonCard.styles";
-
-interface PokemonCardProps {
-  id: number;
-  name: string;
-}
 
 const PokemonCard: React.FC<PokemonCardProps> = ({ id, name }) => {
   const navigate = useNavigate();

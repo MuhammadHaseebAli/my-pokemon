@@ -16,10 +16,10 @@ const PokemonDetails = () => {
   cssOverride={loaderOverride}
   size={150}
   aria-label="Loading Spinner"
-  data-testid="loader"
+  data-testid="clip-loader"
 /></div>;
 
-  if (error) return <p>Error fetching Pokémon</p>;
+  if (error) return <p>Something went wrong</p>;
 
   return (
     <div style={container}>

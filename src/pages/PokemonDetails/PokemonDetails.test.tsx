@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import PokemonDetails from "./PokemonDetails";
 import { useGetPokemonDetailsQuery } from "../../services/pokemon";
 import { useParams } from "react-router-dom";
+import "@testing-library/jest-dom";
 
 // Mock useParams to return a test Pokémon ID
 jest.mock("react-router-dom", () => ({
@@ -31,7 +32,15 @@ describe("PokemonDetails Page", () => {
 
     render(<PokemonDetails />);
 
-    expect(screen.getByText(/loading/i)).toBeTruthy();
+    expect(screen.getByTestId("clip-loader")).toBeTruthy();
+  });
+
+  test("renders non-loading state", () => {
+    (useGetPokemonDetailsQuery as jest.Mock).mockReturnValue({ data: mockPokemonDetails, isLoading: false });
+
+    render(<PokemonDetails />);
+
+    expect(screen.queryByTestId("clip-loader")).not.toBeInTheDocument();
   });
 
   test("renders error state", () => {
@@ -39,7 +48,7 @@ describe("PokemonDetails Page", () => {
 
     render(<PokemonDetails />);
 
-    expect(screen.getByText(/error fetching pokémon/i)).toBeTruthy();
+    expect(screen.getByText('Something went wrong')).toBeTruthy();
   });
 
   test("renders Pokémon details", () => {
@@ -47,6 +56,6 @@ describe("PokemonDetails Page", () => {
 
     render(<PokemonDetails />);
 
-    expect(screen.queryAllByText(/pikachu/i)).toBeTruthy();
+    expect(screen.queryAllByText('pikachu')).toBeTruthy();
   });
 });
