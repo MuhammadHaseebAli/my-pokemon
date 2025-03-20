@@ -1,4 +1,4 @@
-# iPokemon List App
+# PokeReact App
 
 ## Introduction
 
